@@ -1,16 +1,15 @@
-import React from 'react';
 import {
-    ThemeProvider,
+    Box,
+    Container,
     createTheme,
     CssBaseline,
-    Container,
-    Typography,
-    Box,
-    Grid,
-    Stack
+    Stack,
+    ThemeProvider
 } from '@mui/material';
+import React, { useState } from 'react';
 import Search from './components/Search';
 import SearchSettings from './components/SearchSettings';
+import MainPanel from './components/MainPanel';
 
 // Create a theme instance
 const theme = createTheme({
@@ -33,6 +32,9 @@ const theme = createTheme({
 });
 
 export default function App() {
+    const [currentPage, setCurrentPage] = useState('home');
+    const [pageData, setPageData] = useState({});
+
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline /> {/* This normalizes styles across browsers */}
@@ -46,25 +48,21 @@ export default function App() {
                     overflow: 'hidden'
                 }}
             >
-                <Box sx={{ p: 2 }}>
-                    <Stack spacing={2}>
-                        <Search />
-                        <SearchSettings />
-                    </Stack>
-                </Box>
-
                 <Box
                     sx={{
                         flexGrow: 1,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'center',
                         overflow: 'auto',
                         p: 2
                     }}
                 >
+                    <MainPanel currentPage={currentPage} pageData={pageData} />
+                </Box>
 
+                <Box sx={{ p: 2, borderTop: '1px solid rgba(0, 0, 0, 0.12)' }}>
+                    <Stack spacing={2}>
+                        <Search />
+                        <SearchSettings />
+                    </Stack>
                 </Box>
             </Container>
         </ThemeProvider>

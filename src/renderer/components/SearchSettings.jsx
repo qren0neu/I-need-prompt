@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, IconButton, Tooltip } from '@mui/material';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import SortIcon from '@mui/icons-material/Sort';
+import AddIcon from '@mui/icons-material/Add';
 import SettingsIcon from '@mui/icons-material/Settings';
 import BugReportIcon from '@mui/icons-material/BugReport';
 
@@ -29,14 +28,9 @@ const SearchSettings = () => {
 
     return (
         <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Tooltip title="Filter">
-                <IconButton aria-label="filter">
-                    <FilterListIcon />
-                </IconButton>
-            </Tooltip>
-            <Tooltip title="Sort">
-                <IconButton aria-label="sort">
-                    <SortIcon />
+            <Tooltip title="Build and Add a prompt">
+                <IconButton aria-label="build-add-prompt">
+                    <AddIcon />
                 </IconButton>
             </Tooltip>
             <Tooltip title="Settings">
